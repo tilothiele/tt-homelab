@@ -8,13 +8,12 @@ services:
     command: sync /data remote:backup --progress
     environment:
       - TZ=Europe/Berlin
-      - RCLONE_CONFIG_HETZNER_TYPE=sftp
-      - RCLONE_CONFIG_HETZNER_HOST=${HETZNER_HOST}
-      - RCLONE_CONFIG_HETZNER_USER=${HETZNER_USER}
-      - RCLONE_CONFIG_HETZNER_PASS=${HETZNER_PASS}
-      - RCLONE_CONFIG_HETZNER_SHELL_TYPE=unix
-      - RCLONE_CONFIG_HETZNER_MD5SUM_COMMAND=none
-      - RCLONE_CONFIG_HETZNER_SHA1SUM_COMMAND=none
+      - RCLONE_CONFIG_HETZNER_TYPE=crypt
+      - RCLONE_CONFIG_HETZNER_REMOTE=${HETZNER_HOST}
+      - RCLONE_CONFIG_HETZNER_PASSWORD=${HETZNER_PASS}
+      - RCLONE_CONFIG_HETZNER_PASSWORD2=${HETZNER_PASS2}
+      - RCLONE_CONFIG_HETZNER_FILENAME_ENCRYPTION=off
+      - RCLONE_CONFIG_HETZNER_DIRECTORY_NAME_ENCRYPTION=false
     command: "sync /data HETZNER:/homeoffice-docker-volumes-backup --progress"
     volumes:
       - /volume1/backup-docker-volumes:/data:ro
