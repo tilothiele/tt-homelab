@@ -7,15 +7,10 @@ services:
     restart: none
     environment:
       - TZ=Europe/Berlin
-      - RCLONE_CONFIG_HETZNER_TYPE=crypt
-      - RCLONE_CONFIG_HETZNER_REMOTE=${HETZNER_REMOTE}
-      - RCLONE_CONFIG_HETZNER_PASSWORD=${HETZNER_PASS}
-      - RCLONE_CONFIG_HETZNER_PASSWORD2=${HETZNER_PASS2}
-      - RCLONE_CONFIG_HETZNER_FILENAME_ENCRYPTION=off
-      - RCLONE_CONFIG_HETZNER_DIRECTORY_NAME_ENCRYPTION=false
-    command: "sync /data hetzner:/homeoffice-docker-volumes-backup --progress"
+    command: "sync /data storage-box-encrypted:/homeoffice-docker-volumes-backup --progress"
     volumes:
       - /volume1/backup-docker-volumes:/data:ro
+      - /volume1/docker/tt-homeoffice/dsm-198/rclone/rclone.conf:/config/rclone.conf
     # Optional: für Debugging
     stdin_open: true
     tty: true
