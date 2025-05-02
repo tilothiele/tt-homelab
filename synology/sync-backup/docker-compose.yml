@@ -13,7 +13,7 @@ services:
       - RCLONE_CONFIG_HETZNER_PASSWORD2=${HETZNER_PASS2}
       - RCLONE_CONFIG_HETZNER_FILENAME_ENCRYPTION=off
       - RCLONE_CONFIG_HETZNER_DIRECTORY_NAME_ENCRYPTION=false
-    command: "sync /data HETZNER:/homeoffice-docker-volumes-backup --progress"
+    command: "sync /data hetzner:/homeoffice-docker-volumes-backup --progress"
     volumes:
       - /volume1/backup-docker-volumes:/data:ro
     # Optional: für Debugging
