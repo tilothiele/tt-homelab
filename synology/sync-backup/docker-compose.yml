@@ -5,7 +5,6 @@ services:
     image: rclone/rclone:latest
     container_name: rclone-sync
     restart: unless-stopped
-    command: sync /data remote:backup --progress
     environment:
       - TZ=Europe/Berlin
       - RCLONE_CONFIG_HETZNER_TYPE=crypt
