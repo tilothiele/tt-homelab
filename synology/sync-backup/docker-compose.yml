@@ -4,7 +4,7 @@ services:
   rclone:
     image: rclone/rclone:latest
     container_name: rclone-sync
-    restart: unless-stopped
+    restart: none
     environment:
       - TZ=Europe/Berlin
       - RCLONE_CONFIG_HETZNER_TYPE=crypt
