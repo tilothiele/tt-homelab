@@ -10,7 +10,7 @@ services:
     command: "sync /data storage-box-encrypted:/homeoffice-docker-volumes-backup --progress"
     volumes:
       - /volume1/backup-docker-volumes:/data:ro
-      - /volume1/docker/tt-homeoffice/dsm-198/rclone/rclone.conf:/config/rclone.conf
+      - /volume1/docker/tt-homeoffice/dsm-198/rclone/rclone.conf:/config/rclone/rclone.conf
     # Optional: für Debugging
     stdin_open: true
     tty: true
