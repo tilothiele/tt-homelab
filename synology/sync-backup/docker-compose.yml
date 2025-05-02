@@ -7,7 +7,7 @@ services:
     restart: none
     environment:
       - TZ=Europe/Berlin
-    command: "sync /data storage-box-encrypted:/homeoffice-docker-volumes-backup --progress"
+    command: "sync /data storage-box-encrypted:/ --progress"
     volumes:
       - /volume1/backup-docker-volumes:/data:ro
       - /volume1/docker/tt-homeoffice/dsm-198/rclone/rclone.conf:/config/rclone/rclone.conf
