@@ -7,7 +7,7 @@ services:
     restart: none
     environment:
       - TZ=Europe/Berlin
-    command: "rclone copy   --max-age 2d /mnt/backup --ignore-existing storage-box-encrypted:"
+    command: "copy   --max-age 2d /mnt/backup --ignore-existing storage-box-encrypted:"
     volumes:
       - /volume1/backup-docker-volumes:/data:ro
       - /volume1/docker/tt-homeoffice/dsm-198/rclone/rclone.conf:/config/rclone/rclone.conf
@@ -17,7 +17,7 @@ services:
     restart: none
     environment:
       - TZ=Europe/Berlin
-    command: "rclone delete --min-age 14d                              storage-box-encrypted:"
+    command: "delete --min-age 14d                              storage-box-encrypted:"
     volumes:
       - /volume1/docker/tt-homeoffice/dsm-198/rclone/rclone.conf:/config/rclone/rclone.conf
     # Optional: für Debugging
