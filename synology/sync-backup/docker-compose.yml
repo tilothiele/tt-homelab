@@ -1,16 +1,27 @@
 version: '3.8'
 
 services:
-  rclone:
+  rclone-sync:
     image: rclone/rclone:latest
     container_name: rclone-sync
     restart: none
     environment:
       - TZ=Europe/Berlin
-    command: "sync /data storage-box-encrypted:/ --progress"
+    command: "rclone copy   --max-age 2d /mnt/backup --ignore-existing storage-box-encrypted:"
     volumes:
       - /volume1/backup-docker-volumes:/data:ro
       - /volume1/docker/tt-homeoffice/dsm-198/rclone/rclone.conf:/config/rclone/rclone.conf
+  rclone-purge:
+    image: rclone/rclone:latest
+    container_name: rclone-purge
+    restart: none
+    environment:
+      - TZ=Europe/Berlin
+    command: "rclone delete --min-age 14d                              storage-box-encrypted:"
+    volumes:
+      - /volume1/docker/tt-homeoffice/dsm-198/rclone/rclone.conf:/config/rclone/rclone.conf
     # Optional: für Debugging
-    stdin_open: true
-    tty: true
+#    stdin_open: true
+#    tty: true
+
+
